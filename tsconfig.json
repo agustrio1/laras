@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "strict": true,
+        "jsx": "react",
+        "jsxFactory": "createElement",
+        "jsxFragmentFactory": "Fragment",
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "outDir": "./dist",
+        "sourceMap": true
+    },
+    "include": [
+        "./src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
+}

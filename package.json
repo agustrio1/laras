@@ -1,0 +1,39 @@
+{
+  "name": "laras",
+  "version": "1.0.0",
+  "main": "index.html",
+  "dev": "vite dev",
+  "type": "module",
+  "build": "vite build",
+  "release": {
+    "type": "git",
+    "url": "https://github.com/larasjs/laras",
+    "tag": "v1.0.0"
+  },
+  "start": "vite",
+  "exports": "./laras.js",
+  "types": "./laras.d.ts",
+  "files": [
+    "laras.js",
+    "laras.d.ts"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "start": "vite",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-react": "^7.26.3",
+    "typescript": "^5.7.2",
+    "vite": "^5.4.11"
+  },
+  "dependencies": {
+    "rollup": "^4.29.1"
+  }
+}
