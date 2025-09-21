@@ -1,14 +1,23 @@
 import { defineConfig } from "vite";
-import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  root: "",
-  plugins: [react()],
   build: {
     lib: {
-      entry: ["src/index.ts", "index.html"],
+      entry: "laras.ts",
       name: "Laras",
-      fileName: (format) => `laras.${format}.js`,
+      formats: ["es", "cjs", "umd"],
+      fileName: (format) => {
+        switch (format) {
+          case "es":
+            return "laras.esm.js";
+          case "cjs":
+            return "laras.cjs.js";
+          case "umd":
+            return "laras.umd.js";
+          default:
+            return "laras.js";
+        }
+      },
     },
     rollupOptions: {
       external: [],
@@ -16,5 +25,8 @@ export default defineConfig({
         globals: {},
       },
     },
+  },
+  server: {
+    open: true,
   },
 });

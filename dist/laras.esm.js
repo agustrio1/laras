@@ -1,0 +1,75 @@
+function s(n, t = {}, ...e) {
+  if (typeof n == "function")
+    return n({ ...t, children: e });
+  const r = document.createElement(n);
+  return Object.entries(t || {}).forEach(([o, u]) => {
+    o.startsWith("on") && typeof u == "function" ? r.addEventListener(o.slice(2).toLowerCase(), u) : o === "className" ? r.className = u : r.setAttribute(o, u);
+  }), e.flat().forEach((o) => {
+    typeof o == "string" || typeof o == "number" ? r.appendChild(document.createTextNode(o.toString())) : o instanceof HTMLElement && r.appendChild(o);
+  }), r;
+}
+function c(n, t) {
+  t.innerHTML = "", t.appendChild(n());
+}
+function l(n) {
+  let t = n;
+  const e = /* @__PURE__ */ new Set();
+  return [() => t, (i) => {
+    t = i, e.forEach((a) => a());
+  }, (i) => (e.add(i), () => e.delete(i))];
+}
+class d {
+  constructor(t) {
+    this.routes = [], this.rootElement = null, this.rootElement = t, window.addEventListener("hashchange", () => this.loadRoute()), this.loadRoute();
+  }
+  addRoute(t, e) {
+    this.routes.push({ path: t, component: e });
+  }
+  loadRoute() {
+    const t = window.location.hash.substring(1) || "/", e = this.routes.find((r) => r.path === t);
+    e ? (this.rootElement.innerHTML = "", this.rootElement.appendChild(e.component())) : this.rootElement.innerHTML = "<h1>404 - Not Found</h1>";
+  }
+}
+function f({ text: n, onclick: t, className: e }) {
+  return s("button", {
+    className: e,
+    onclick: t
+  }, n);
+}
+function h({ value: n, onChange: t, className: e }) {
+  return s("input", {
+    value: n,
+    onChange: (r) => t(r.target.value),
+    className: e
+  });
+}
+function p({ value: n, checked: t, onChange: e, className: r }) {
+  return s("input", {
+    type: "radio",
+    value: n,
+    checked: t,
+    onChange: (o) => e(o.target.value),
+    className: r
+  });
+}
+function m({ options: n, value: t, onChange: e, className: r }) {
+  return s("select", {
+    value: t,
+    onChange: (o) => e(o.target.value),
+    className: r
+  }, n.map((o) => s("option", { value: o }, o)));
+}
+function E({ text: n, className: t }) {
+  return s("div", { className: t }, n);
+}
+export {
+  f as Button,
+  h as Input,
+  p as RadioButton,
+  d as Router,
+  m as Select,
+  E as Toast,
+  s as createElement,
+  l as larasState,
+  c as render
+};

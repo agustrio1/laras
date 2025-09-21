@@ -1,18 +1,22 @@
 {
     "compilerOptions": {
-        "target": "ES6",
-        "module": "CommonJS",
-        "strict": true,
-        "jsx": "react",
-        "jsxFactory": "createElement",
-        "jsxFragmentFactory": "Fragment",
+        "target": "ES2020",
+        "module": "ES2020",
         "moduleResolution": "node",
+        "strict": true,
+        "jsx": "preserve",
         "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "declaration": true,
         "outDir": "./dist",
-        "sourceMap": true
+        "sourceMap": true,
+        "lib": ["ES2020", "DOM", "DOM.Iterable"]
     },
     "include": [
-        "./src/**/*"
+        "./src/**/*",
+        "./laras.ts"
     ],
     "exclude": [
         "node_modules",
